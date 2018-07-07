@@ -48,7 +48,6 @@ services:
       - alertmanager:alertmanager
     depends_on:
       - cadvisor
-      - nginx
     restart: always
 
   node-exporter:
