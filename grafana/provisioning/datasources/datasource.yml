@@ -30,7 +30,7 @@ datasources:
   # <string> basic auth username
   basicAuthUser: admin
   # <string> basic auth password
-  basicAuthPassword: foobar
+  basicAuthPassword: parity
   # <bool> enable/disable with credentials headers
   withCredentials:
   # <bool> mark as default datasource. Max one per org

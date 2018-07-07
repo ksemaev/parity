@@ -3,13 +3,32 @@ version: '3.1'
 volumes:
     prometheus: {}
     grafana: {}
+    classic: {}
 
 services:
 
-  nginx:
-    image: nginx:1.13
+  classic:
+    image: parity/parity:stable
+    container_name: classic
+    volumes:
+      - classic:/data
+    command:
+      - '--mode active'
+      - '--chain classic'
+      - '--base-path /data'
+      - '--ports-shift=0'
+      - '--no-ui'
+      - '--jsonrpc-threads 2'
+      - '--jsonrpc-server-threads 4'
+      - '--no-ws'
+      - '--no-dapps'
+      - '--tracing on'
+      - '--pruning fast'
     ports:
-      - 80:80
+      - 8180:8180
+      - 8545:8545
+      - 8080:9001
+    restart: always
 
   prometheus:
     image: prom/prometheus:v2.1.0
