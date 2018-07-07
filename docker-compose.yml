@@ -12,18 +12,7 @@ services:
     container_name: parity_classic
     volumes:
       - classic:/data
-    command:
-      - '--mode active'
-      - '--chain classic'
-      - '--base-path /data'
-      - '--ports-shift=0'
-      - '--no-ui'
-      - '--jsonrpc-threads 2'
-      - '--jsonrpc-server-threads 4'
-      - '--no-ws'
-      - '--no-dapps'
-      - '--tracing on'
-      - '--pruning fast'
+    command: --mode active --chain foundation --base-path /data --ports-shift=0 --no-ui --jsonrpc-threads 2 --jsonrpc-server-threads 2 --no-ws --no-dapps --tracing on --pruning fast
     ports:
       - 8180:8180
       - 8545:8545
