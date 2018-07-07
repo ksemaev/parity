@@ -9,7 +9,7 @@ services:
 
   classic:
     image: parity/parity:stable
-    container_name: classic
+    container_name: parity_classic
     volumes:
       - classic:/data
     command:
