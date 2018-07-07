@@ -1,8 +1,8 @@
 version: '3.1'
 
 volumes:
-    parity_prometheus: {}
-    parity_grafana: {}
+    prometheus: {}
+    grafana: {}
 
 services:
 
@@ -16,7 +16,7 @@ services:
     container_name: parity_prometheus
     volumes:
       - ./prometheus/:/etc/prometheus/
-      - parity_prometheus:/prometheus
+      - prometheus:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -80,7 +80,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - parity_grafana:/var/lib/grafana
+      - grafana:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
