@@ -110,7 +110,7 @@
           },
           "targets": [
             {
-              "expr": "(sum(node_memory_MemTotal) - sum(node_memory_MemFree+node_memory_Buffers+node_memory_Cached) ) / sum(node_memory_MemTotal) * 100",
+              "expr": "(sum(node_memory_MemTotal_bytes) - sum(node_memory_MemFree_bytes+node_memory_Buffers_bytes+node_memory_Cached_bytes) ) / sum(node_memory_MemTotal_bytes) * 100",
               "interval": "10s",
               "intervalFactor": 1,
               "refId": "A",
@@ -189,7 +189,7 @@
           },
           "targets": [
             {
-              "expr": "sum(sum by (container_name)( rate(container_cpu_usage_seconds_total{image!=\"\"}[1m] ) )) / count(node_cpu{mode=\"system\"}) * 100",
+              "expr": "sum(sum by (container_name)( rate(container_cpu_usage_seconds_total{image!=\"\"}[1m] ) )) / count(node_cpu_seconds_total{mode=\"system\"}) * 100",
               "interval": "10s",
               "intervalFactor": 1,
               "refId": "A",
