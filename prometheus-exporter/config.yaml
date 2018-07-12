@@ -1,0 +1,5 @@
+port: 8000
+interval: 250 # in ms
+nodes:
+  - name: classic
+    url: http://localhost:8545/
