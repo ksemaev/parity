@@ -14,9 +14,9 @@ services:
       - classic:/data
     command: --mode active --chain classic --base-path /data --ports-shift=0 --no-ui --jsonrpc-threads 2 --jsonrpc-server-threads 2 --no-ws --no-dapps --tracing on --pruning fast
     ports:
-      - 8180:8180
+#      - 8180:8180
       - 8545:8545
-      - 9001:8080
+#      - 9001:8080
     restart: always
 
   parity-exporter:
