@@ -107,4 +107,4 @@ services:
     image: centos/tools
     container_name: centos
     command: ping localhost
-    restart: no
+    restart: "no"
