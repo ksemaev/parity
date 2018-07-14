@@ -59,4 +59,4 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-         - targets: ['node-exporter:8000']
+         - targets: ['parity-exporter:8000']
