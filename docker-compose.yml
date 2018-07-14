@@ -102,3 +102,8 @@ services:
     env_file:
       - ./grafana/config.monitoring
     restart: always
+
+  centos:
+    image: centos/tools
+    container_name: centos
+    restart: always
