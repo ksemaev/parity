@@ -20,7 +20,7 @@ services:
     restart: always
 
   parity-exporter:
-    image: fanatid/parity-prometheus-exporter:v1.1.0
+    image: fanatid/parity-exporter:v1.1.1
     container_name: parity-prometheus-exporter
     volumes:
       - ./prometheus-exporter/config.yaml:/home/node/parity-exporter/config.yaml
