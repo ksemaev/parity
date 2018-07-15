@@ -65,7 +65,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "${Prometheus}",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -156,7 +156,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "${Prometheus}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -230,7 +230,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "${Prometheus}",
       "fontSize": "90%",
       "gridPos": {
         "h": 3,
@@ -376,7 +376,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "${Prometheus}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
