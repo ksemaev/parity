@@ -14,13 +14,11 @@ services:
       - classic:/data
     command: --mode active --chain classic --base-path /data --ports-shift=0 --no-ui --jsonrpc-threads 2 --jsonrpc-server-threads 2 --jsonrpc-interface all --no-ws --no-dapps --tracing on --pruning fast
     ports:
-#      - 8180:8180
       - 8545:8545
-#      - 9001:8080
     restart: always
 
   parity-exporter:
-    image: fanatid/parity-exporter:v1.1.1
+    image: fanatid/parity-exporter:v2.0.0
     container_name: parity-exporter
     volumes:
       - ./prometheus-exporter/config.yaml:/home/node/parity-exporter/config.yaml
