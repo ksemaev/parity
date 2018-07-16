@@ -114,6 +114,7 @@ services:
     restart: always
 
   elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elastic:/usr/share/elasticsearch/data
@@ -124,6 +125,7 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
 
   logstash:
+    image: docker.elastic.co/logstash/logstash-oss:6.3.0
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -135,6 +137,7 @@ services:
       - elasticsearch
 
   kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.3.0
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
