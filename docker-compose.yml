@@ -115,6 +115,7 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
+    container_name: elasticsearch
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elastic:/usr/share/elasticsearch/data
@@ -126,6 +127,7 @@ services:
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.3.0
+    container_name: logstash
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -138,12 +140,25 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana-oss:6.3.0
+    container_name: kibana
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
       - 5601:5601
     depends_on:
       - elasticsearch
+
+  logspout:
+    image: gliderlabs/logspout:latest
+    container_name: logspout
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      ROUTE_URIS: logstash://logstash:5000
+      LOGSTASH_TAGS: docker-elk
+    depends_on:
+      - logstash
+    restart: on-failure
 
   centos:
     image: centos/tools
