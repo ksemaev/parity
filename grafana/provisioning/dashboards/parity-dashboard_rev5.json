@@ -101,9 +101,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "peer_count{chain=\"classic\"} ",
+          "expr": "parity_peer_count{chain=\"classic\"} ",
           "format": "time_series",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -167,7 +168,7 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 7,
+        "w": 8,
         "x": 9,
         "y": 0
       },
@@ -208,7 +209,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "\nversion{chain=\"classic\"}",
+          "expr": "\nparity_version{chain=\"classic\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{value}}",
@@ -233,14 +234,15 @@
       "datasource": "Prometheus",
       "fontSize": "90%",
       "gridPos": {
-        "h": 3,
-        "w": 7,
+        "h": 5,
+        "w": 8,
         "x": 9,
         "y": 2
       },
+      "hideTimeOverride": true,
       "id": 10,
       "links": [],
-      "pageSize": null,
+      "pageSize": 1,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -329,22 +331,6 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "Value",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
           "pattern": "",
           "thresholds": [],
           "type": "number",
@@ -353,24 +339,114 @@
       ],
       "targets": [
         {
-          "expr": "latest_hash{chain=\"classic\"}",
+          "expr": "parity_latest{chain=\"classic\"}",
           "format": "table",
-          "instant": true,
-          "interval": "",
+          "instant": false,
+          "interval": "1s",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "timeFrom": "1s",
+      "timeShift": null,
       "title": "classic latest hash",
       "transform": "table",
       "transparent": false,
       "type": "table"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 7
+      },
+      "id": 11,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "parity_peer_count{chain=\"testnet\"} ",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "testnet peer count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorValue": true,
+      "colorValue": false,
       "colors": [
         "#299c46",
         "rgba(237, 129, 40, 0.89)",
@@ -387,11 +463,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 7,
+        "w": 8,
         "x": 9,
-        "y": 5
+        "y": 7
       },
-      "id": 4,
+      "id": 12,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -428,17 +504,17 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "latest_height{chain=\"classic\"}",
+          "expr": "\nparity_version{chain=\"testnet\"}",
           "format": "time_series",
-          "instant": true,
           "intervalFactor": 1,
+          "legendFormat": "{{value}}",
           "refId": "A"
         }
       ],
       "thresholds": "",
-      "title": "classic height",
+      "title": "testnet version",
       "type": "singlestat",
-      "valueFontSize": "50%",
+      "valueFontSize": "30%",
       "valueMaps": [
         {
           "op": "=",
@@ -446,7 +522,133 @@
           "value": "null"
         }
       ],
-      "valueName": "current"
+      "valueName": "name"
+    },
+    {
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "90%",
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 9,
+        "y": 9
+      },
+      "hideTimeOverride": true,
+      "id": 13,
+      "links": [],
+      "pageSize": 1,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "__name__",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "chain",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "job",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "parity_latest{chain=\"testnet\"}",
+          "format": "table",
+          "instant": false,
+          "interval": "1s",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": "1s",
+      "timeShift": null,
+      "title": "testnet latest hash",
+      "transform": "table",
+      "transparent": false,
+      "type": "table"
     }
   ],
   "refresh": false,
@@ -486,7 +688,7 @@
     ]
   },
   "timezone": "",
-  "title": "Parity metrics",
-  "uid": "PCKkFbdmz",
-  "version": 15
+  "title": "Parity",
+  "uid": "parity",
+  "version": 14
 }

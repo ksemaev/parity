@@ -161,9 +161,3 @@ services:
     depends_on:
       - logstash
     restart: on-failure
-
-  centos:
-    image: centos/tools
-    container_name: centos
-    command: ping localhost
-    restart: "no"
