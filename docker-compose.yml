@@ -149,7 +149,8 @@ services:
       - elasticsearch
 
   logspout:
-    image: bekt/logspout-logstash
+    build:
+      context: logspout
     container_name: logspout
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
