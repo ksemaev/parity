@@ -3,3 +3,5 @@ interval: 250 # in ms
 nodes:
   - name: classic
     url: http://parity-classic:8545/
+  - name: testnet
+    url: http://parity-testnet:8546/

@@ -4,6 +4,7 @@ volumes:
     prometheus: {}
     grafana: {}
     classic: {}
+    testnet: {}
 
 services:
 
@@ -15,6 +16,16 @@ services:
     command: --mode active --chain classic --base-path /data --ports-shift=0 --no-ui --jsonrpc-threads 2 --jsonrpc-server-threads 2 --jsonrpc-interface all --no-ws --no-dapps --tracing on --pruning fast
     ports:
       - 8545:8545
+    restart: always
+
+  testnet:
+    image: parity/parity:stable
+    container_name: parity-testnet
+    volumes:
+      - testnet:/data
+    command: --mode active --chain testnet --base-path /data --ports-shift=0 --no-ui --jsonrpc-threads 2 --jsonrpc-server-threads 2 --jsonrpc-interface all --no-ws --no-dapps --tracing on --pruning fast
+    ports:
+      - 8546:8545
     restart: always
 
   parity-exporter:

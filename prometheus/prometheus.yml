@@ -56,7 +56,7 @@ scrape_configs:
   - job_name: 'parity-exporter'
 
     # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
+    scrape_interval: 1s
 
     static_configs:
          - targets: ['parity-exporter:8000']
