@@ -156,6 +156,7 @@ services:
     environment:
       ROUTE_URIS: logstash://logstash:5000
       LOGSTASH_TAGS: docker-elk
+      RETRY_COUNT: 30
     depends_on:
       - logstash
     restart: on-failure
