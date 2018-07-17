@@ -1,13 +1,14 @@
 # A typical project for starting blockchain nodes
 
-The project consists:
+The project consists of:
 - two [parity containers](https://github.com/paritytech/parity);
 - performance monitoring stack with containers prometheus, node-exporter, cadvisor, alert-manager, grafana taken from [here](https://github.com/vegasbrianc/prometheus) with several fixes;
 - parity metric exporter from [here](https://github.com/fanatid/parity-exporter);
 - log monitoring stack with containers elasticsearch, logstash, kibana, logspout inspired by [this](https://github.com/deviantony/docker-elk) and [this](https://github.com/looplab/logspout-logstash). 
 
 # Pre-requisites
-Ensure you install the latest version of docker on your Docker host machine.
+Install the latest version of docker on your Docker host machine.
+Ensure that you have enough space for parity chains db.
 
 # Installation & Configuration
 Clone the project locally to your Docker host.
@@ -24,9 +25,10 @@ Grafana will be avalibale at http://your_ip:3000  with admin:foobar
 Kibana will be avaliable http://your_ip:5601
  
 # ToDo list
-- create alerts;
+- setup alerts;
 - configure storage and garbage collectors;
-- get logs from only application containers.
+- get logs from only application containers;
+- create kibana dashboards.
 
 
 # Security Considerations
@@ -34,5 +36,5 @@ This project is intended to be a quick-start to get up and running. Security has
 
 Since this is a template to get started all services are exposing their ports to allow for easy troubleshooting and understanding of how the stack works.
 
-For production usage consider installing containers at Kubernetes or at least Swarm
+For production usage consider installing containers at Kubernetes or at least Swarm.
 
